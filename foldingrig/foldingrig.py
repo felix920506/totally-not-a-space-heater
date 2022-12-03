@@ -21,9 +21,9 @@ while True:
         else:
             cmd = 'pause'
 
-    for slot in enabled_slots:
-        finalcmd = cmd + ' ' + str(slot) + '\n'
-        fahclient.write(bytes(finalcmd,'utf8'))
+        for slot in enabled_slots:
+            finalcmd = cmd + ' ' + str(slot) + '\n'
+            fahclient.write(bytes(finalcmd,'utf8'))
     
     lastState = newState
 
