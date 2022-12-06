@@ -13,8 +13,11 @@ lastState = False
 fahclient.read_until(b'>')
 
 while True:
+    try:
+        newState = bool(int(controller.readline().decode('utf8').strip()))
+    except:
+        continue
 
-    newState = bool(int(controller.readline().decode('utf8').strip()))
     if not newState == lastState:
         if newState == True:
             cmd = 'unpause'
