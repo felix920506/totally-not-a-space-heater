@@ -1,1 +1,9 @@
 .vscode/c_cpp_properties.json
+microcontroller/ArduinoBuild/build.options.json
+microcontroller/ArduinoBuild/build_opt.h
+microcontroller/ArduinoBuild/compile_commands.json
+microcontroller/ArduinoBuild/microcontroller.ino.bootloader.bin
+microcontroller/ArduinoBuild/partitions.csv
+microcontroller/ArduinoBuild/sketch/ArduinoBuild/build.options.json
+microcontroller/ArduinoBuild/sketch/ArduinoBuild/build_opt.h
+microcontroller/ArduinoBuild/sketch/microcontroller.ino.cpp
