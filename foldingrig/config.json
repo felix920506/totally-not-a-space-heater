@@ -1,0 +1,8 @@
+{
+    "hosts": [
+        {"ip": "127.0.0.1", "port": 36330, "enabled_slots": [0,2] }
+    ],
+    "mcu": {
+        "port": "COM3", "baud": 115200
+    }
+}
