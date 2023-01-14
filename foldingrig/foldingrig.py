@@ -41,7 +41,13 @@ class client:
             self.run(finalcmd)
 
 for host in options['hosts']:
-    fahclients.append(client(host['ip'],host['port'],host['slots']))
+    if not 'port' in host:
+        host['port'] = 36330
+    
+    if not 'pass' in host:
+        host['pass'] = None
+
+    fahclients.append(client(host['ip'],host['port'],host['slots'],host['pass']))
 
 # setup MCU connection
 

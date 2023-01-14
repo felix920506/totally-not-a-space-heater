@@ -7,3 +7,4 @@ microcontroller/ArduinoBuild/partitions.csv
 microcontroller/ArduinoBuild/sketch/ArduinoBuild/build.options.json
 microcontroller/ArduinoBuild/sketch/ArduinoBuild/build_opt.h
 microcontroller/ArduinoBuild/sketch/microcontroller.ino.cpp
+foldingrig/config.json
