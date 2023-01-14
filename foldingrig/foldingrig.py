@@ -7,11 +7,6 @@ import json
 with open('config.json','r',encoding='utf8') as configfile:
     options = json.load(configfile)
 
-# host = '127.0.0.1:36330'
-# enabled_slots = [0,2]
-# controllerport = 'COM3'
-# controllerbaud = 115200
-
 # Setup FAH Connections
 
 fahclients = []
@@ -21,24 +16,27 @@ class client:
         self.connection = telnetlib.Telnet(host,port)
         self.connection.read_until(b'>')
         self.slots = slots
+        self.host = host
+        self.port = port
         if password:
             self.run(f'auth {password}')
 
     def run(self,cmd):
-        self.connection.write(bytes(cmd + '\n','utf8'))
-        return self.connection.read_unti(b'>')
+        try:
+            self.connection.write(bytes(cmd + '\n','utf8'))
+            res = self.connection.read_until(b'>')
+        except:
+            print(f'failed to run command on host {self.host}:{self.port}')
+        else:
+            return res
 
     def pause(self):
-        cmd = 'pause'
         for slot in self.slots:
-            finalcmd = cmd + ' ' + str(slot) + '\n'
-            self.run(finalcmd)
+            self.run('pause')
     
     def unpause(self):
-        cmd = 'unpause'
         for slot in self.slots:
-            finalcmd = cmd + ' ' + str(slot) + '\n'
-            self.run(finalcmd)
+            self.run('unpause')
 
 for host in options['hosts']:
     if not 'port' in host:
@@ -47,7 +45,7 @@ for host in options['hosts']:
     if not 'pass' in host:
         host['pass'] = None
 
-    fahclients.append(client(host['ip'],host['port'],host['slots'],host['pass']))
+    fahclients.append(client(host['ip'],host['port'],host['enabled_slots'],host['pass']))
 
 # setup MCU connection
 
@@ -94,12 +92,9 @@ while True:
     if not newState == lastState:
         if newState:
             unpause()
+            print('Threshold reached, heating unpaused')
         else:
             pause()
-
-        # for slot in enabled_slots:
-        #     finalcmd = cmd + ' ' + str(slot) + '\n'
-        #     fahclient.write(bytes(finalcmd,'utf8'))
-        #     fahclient.read_until(b'>')
+            print('Threshold reached, heating paused')
     
     lastState = newState
