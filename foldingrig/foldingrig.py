@@ -21,6 +21,9 @@ class client:
         if password:
             self.run(f'auth {password}')
 
+    def __del__(self):
+        self.connection.write(bytes('quit\n','utf8'))
+
     def run(self,cmd):
         try:
             self.connection.write(bytes(cmd + '\n','utf8'))
