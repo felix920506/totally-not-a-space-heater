@@ -1,6 +1,29 @@
 # totally-not-a-space-heater
 A project attempting to control a folding@home rig based on room temperature with a microcontroller
 
+## Required Materials, written 2023 Feb 10
+The following parts are required to build:
+- ESP32 Micontroller (Other MCUs may work but will NOT be supported)
+- 2 Buttons
+- 16x2 Character LCD (Based on HD44780) using I2C interface (PCF8574)
+- DHT22 Temperature and Humidity Sensor
+- Wires to connect circuits together (Breadboard optional)
+- Micro USB cable capable of Data transfer
+
+## Required Environment for Programming MCU
+- Arduino IDE
+- Drivers for your particular MCU (Varies depending on what you get)
+- Libraries below to be installed
+
+## Required Arduino Libraries
+- [Button2](https://github.com/LennartHennigs/Button2) by Lennart Hennigs
+- [DHT sensor library](https://github.com/adafruit/DHT-sensor-library) by Adafruit **Windows Users Please do NOT install v1.3.3 or newer if you have ESP32**
+- [LiquidCrystal I2C](https://github.com/johnrickman/LiquidCrystal_I2C) by Frank de Brabander
+
+## Required Environment for controlling Folding Rig(s)
+- Python3 environment (Development done on 3.10 and 3.11, 3.13+ will NOT work, please report issues with other versions if you have any)
+- Drivers for your MCU (Varies depending on what you get)
+
 ## Where this all started, written 2022 Nov 24
   I am a college student living in on-campus housing provided by the school. It's now late November and it's frequently getting below 0°C outside. To make matters worse, the heating in the housing provided by the school isn't working properly. It doesn't go above 70°F (21.1°C) to begin with. What's worse, it switches itself to cooling almost everyday evening. One night I grabbed a thermometer I had for cooking and stuck it in the vent. It was blowing out cold air at around 7°C. I have made multiple reports to housing staff, but nothing has been done. So I had no choice but to get a space heater. 4 maintenance requests and 1 confiscated space heater later, still nothing has been done as far as I can tell.
 
@@ -8,8 +31,7 @@ So I hatched a plan: Computers kick out all the power they consume as heat, so w
   - Intel Core i3-2100
   - Gigabyte GA-Z77P-D3
   - Single 8GB stick of DDR3 from Teamgroup
-  - Radeon R9 290X GPU from XFX
-  - Radeon R9 290 GPU from XFX
+  - 2x Radeon R9 290 GPU from XFX
   - NZXT H510 Case
   - Silicon Power A55 250GB SSD
   - FSP Hydro G Pro 850W Power Supply
@@ -25,7 +47,9 @@ So I hatched a plan: Computers kick out all the power they consume as heat, so w
 
 ## Project Goals (2022 Nov 24)
 
-  - [ ] Start and pause Folding based on room temperature
+  - [x] Start and pause Folding based on room temperature
   - [ ] Vary heat output based on heating needs
-  - [ ] Expand to multiple machines
-  - [ ] Connections over Serial, Wifi and Bluetooth
+  - [x] Expand to multiple machines
+  - [ ] Connections over Serial
+  - [ ] Connections over Wifi
+  - [ ] Connections over Bluetooth
