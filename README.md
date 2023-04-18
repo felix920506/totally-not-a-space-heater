@@ -1,7 +1,10 @@
 # totally-not-a-space-heater
 A project attempting to control a folding@home rig based on room temperature with a microcontroller
 
-## Required Materials, written 2023 Feb 10
+⚠️ IMPORTANT NOTICE ⚠️
+This project DOES NOT work with FAHClient v8, Please install v7 to use
+
+## Required Materials
 The following parts are required to build:
 - ESP32 Micontroller (Other MCUs may work but will NOT be supported)
 - 2 Buttons
@@ -24,7 +27,7 @@ The following parts are required to build:
 - Python3 environment (Development done on 3.10 and 3.11, 3.13+ will NOT work, please report issues with other versions if you have any)
 - Drivers for your MCU (Varies depending on what you get)
 
-## Where this all started, written 2022 Nov 24
+## Where this all started
   I am a college student living in on-campus housing provided by the school. It's now late November and it's frequently getting below 0°C outside. To make matters worse, the heating in the housing provided by the school isn't working properly. It doesn't go above 70°F (21.1°C) to begin with. What's worse, it switches itself to cooling almost everyday evening. One night I grabbed a thermometer I had for cooking and stuck it in the vent. It was blowing out cold air at around 7°C. I have made multiple reports to housing staff, but nothing has been done. So I had no choice but to get a space heater. 4 maintenance requests and 1 confiscated space heater later, still nothing has been done as far as I can tell.
 
 So I hatched a plan: Computers kick out all the power they consume as heat, so why not get a computer designed to kick out as much heat as possible on the cheap? I went on ebay and amazon, looking for parts. Obviously I'm not going to spend a fortune on things like 13 gen Core i9s and RTX 4090s, so I went back in time, looking for older parts. I intended to run Folding@home on this box as opposed to Furmark so at least the world is getting something out of it. The final configuration I ended with is as follows:
@@ -45,11 +48,11 @@ So I hatched a plan: Computers kick out all the power they consume as heat, so w
   
   Then I thought, why not make a thermostat that will turn on and off the heating according to the room temperature? So I gathered a bunch of parts on amazon and started waiting. This is where I'm at right now.
 
-## Project Goals (2022 Nov 24)
+## Project Goals
 
   - [x] Start and pause Folding based on room temperature
   - [ ] Vary heat output based on heating needs
   - [x] Expand to multiple machines
-  - [ ] Connections over Serial
-  - [ ] Connections over Wifi
+  - [x] Connections over Serial
+  - ~~[ ] Connections over Wifi~~ Cancelled
   - [ ] Connections over Bluetooth
