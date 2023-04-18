@@ -20,7 +20,7 @@ The following parts are required to build:
 
 ## Required Arduino Libraries
 - [Button2](https://github.com/LennartHennigs/Button2) by Lennart Hennigs
-- [DHT sensor library](https://github.com/adafruit/DHT-sensor-library) by Adafruit **Windows Users Please do NOT install v1.3.3 or newer if you have ESP32**
+- [DHT sensor library](https://github.com/adafruit/DHT-sensor-library) by Adafruit ⚠️ **Windows Users Please do NOT install v1.3.3 or newer if you have ESP32**
 - [LiquidCrystal I2C](https://github.com/johnrickman/LiquidCrystal_I2C) by Frank de Brabander
 
 ## Required Environment for controlling Folding Rig(s)
