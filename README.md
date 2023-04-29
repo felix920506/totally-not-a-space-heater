@@ -13,6 +13,12 @@ The following parts are required to build:
 - Wires to connect circuits together (Breadboard optional)
 - Micro USB cable capable of Data transfer
 
+## Connecting Components to ESP32
+- Normally Open Terminals of one button between GND and Pin 12 (Temp Up)
+- Normally Open Terminals of one button between GND and Pin 13 (Temp Down)
+- For DHT22, + to VIN, Out to Pin 4, - to GND
+- I2C LCD, GND to GND, VCC to VIN, SDA to Pin 21, SDL to Pin 22
+
 ## Required Environment for Programming MCU
 - Arduino IDE
 - Drivers for your particular MCU (Varies depending on what you get)
