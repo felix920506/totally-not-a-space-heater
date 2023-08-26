@@ -1,3 +1,4 @@
 microcontroller/ArduinoBuild/
 foldingrig/config.json
+foldingrig/__pycache__/
 *.pyc
