@@ -24,8 +24,8 @@ class FAHClient:
 
     def pause(self):
         for slot in self.slots:
-            self.run('pause')
+            self.run(f'pause {slot}')
     
     def unpause(self):
         for slot in self.slots:
-            self.run('unpause')
+            self.run(f'unpause {slot}')
