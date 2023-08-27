@@ -10,7 +10,7 @@ class FAHClient:
         self.__connect()
 
     def __connect(self):
-        if not self.__connection is None:
+        if self.__connection is None:
             try:
                 self.__connection = telnetlib.Telnet(self.__host,self.__port)
                 self.__connection.read_until(b'>')
@@ -25,14 +25,14 @@ class FAHClient:
     def __del__(self):
         self.__run('quit')
 
-    def run(self,cmd):
+    def __run(self,cmd):
         self.__connect()
-        if self.__connection:
+        if self.__connection is not None:
             self.__connection.write(bytes(cmd + '\n','utf8'))
-            res = self.connection.read_until(b'>')
+            res = self.__connection.read_until(b'>')
             return res
         else:
-            print(f'failed to run command on host {self.host}:{self.port}')
+            print(f'failed to run command on host {self.__host}:{self.__port}')
             return None
 
     def pause(self):
