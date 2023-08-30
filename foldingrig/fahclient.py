@@ -2,30 +2,43 @@ import telnetlib
 
 class FAHClient:
     def __init__(self,host,port,slots,password=None):
-        self.connection = telnetlib.Telnet(host,port)
-        self.connection.read_until(b'>')
-        self.slots = slots
-        self.host = host
-        self.port = port
-        if password:
-            self.run(f'auth {password}')
+        self.__slots = slots
+        self.__host = host
+        self.__port = port
+        self.__password = password
+        self.__connection = None
+        self.__connect()
+
+    def __connect(self):
+        if self.__connection is None:
+            try:
+                self.__connection = telnetlib.Telnet(self.__host,self.__port)
+                self.__connection.read_until(b'>')
+            
+                if self.__password:
+                    self.__run(f'auth {self.__password}')
+
+            except:
+                print(f'Connection to {self.__host}:{self.__port} Failed.')
+                self.__connection = None
 
     def __del__(self):
-        self.connection.write(bytes('quit\n','utf8'))
+        self.__run('quit')
 
-    def run(self,cmd):
-        try:
-            self.connection.write(bytes(cmd + '\n','utf8'))
-            res = self.connection.read_until(b'>')
-        except:
-            print(f'failed to run command on host {self.host}:{self.port}')
-        else:
+    def __run(self,cmd):
+        self.__connect()
+        if self.__connection is not None:
+            self.__connection.write(bytes(cmd + '\n','utf8'))
+            res = self.__connection.read_until(b'>')
             return res
+        else:
+            print(f'failed to run command on host {self.__host}:{self.__port}')
+            return None
 
     def pause(self):
-        for slot in self.slots:
-            self.run(f'pause {slot}')
+        for slot in self.__slots:
+            self.__run(f'pause {slot}')
     
     def unpause(self):
-        for slot in self.slots:
-            self.run(f'unpause {slot}')
+        for slot in self.__slots:
+            self.__run(f'unpause {slot}')
