@@ -89,7 +89,7 @@ if __name__ == '__main__' and not loadconfigerror:
 
     # setup MCU connection
 
-    controller = serial.Serial(options['mcu']['port'], options['mcu']['baud'])
+    controller = serial.Serial(options['mcu']['port'], options['mcu']['baud'],timeout=10)
 
     lastState = False
     newState = False
@@ -126,6 +126,8 @@ if __name__ == '__main__' and not loadconfigerror:
     while True:
         try:
             newState = bool(int(controller.readline().decode('utf8').strip()))
+        except TimeoutError:
+            coutroller = serial.Serial(options['mcu']['port'], options['mcu']['baud'],timeout=10)
         except:
             continue
 
