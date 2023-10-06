@@ -30,7 +30,8 @@ The following parts are required to build:
 - [LiquidCrystal I2C](https://github.com/johnrickman/LiquidCrystal_I2C) by Frank de Brabander
 
 ## Required Environment for controlling Folding Rig(s)
-- Python3 environment (Development done on 3.10 and 3.11, 3.13+ will NOT work, please report issues with other versions if you have any)
+- Python3 environment (Development done on 3.10 and 3.11, 3.13+ will NOT work, 3.6+ *should* work but not tested)
+- pyserial package (Install with `pip install pyserial`)
 - Drivers for your MCU (Varies depending on what you get)
 
 ## Where this all started
